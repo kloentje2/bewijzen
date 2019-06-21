@@ -10,13 +10,13 @@ class checkEmailController extends Controller
     public function __invoke(Request $request)
     {
         $hash = $request->hash;
-		$message = DB::table('parsed_emails')->where('mail_to', 'like' ,"%".$hash."@vimexx.email%")->first();
+		$message = DB::table('parsed_emails')->where('mail_to', 'like' ,"%".$hash."@example.email%")->first();
 		
 		if (!$message) {
 			//return redirect()->route('index');
-			return view('check',['hash' => array('fail',$hash."@vimexx.email")]);
+			return view('check',['hash' => array('fail',$hash."@example.email")]);
 		} else {
-			return view('check',['hash' => array('done',$hash."@vimexx.email")]);
+			return view('check',['hash' => array('done',$hash."@example.email")]);
 		}
 		
 		$information = array
